@@ -1,5 +1,6 @@
 import fileSchema from "../model/model.js"
-
+import pkg from "jsonwebtoken"
+const { sign } =pkg
 
 
 
@@ -14,7 +15,8 @@ export async function addFile(req,res) {
         await fileSchema.create({profile}).then((e)=>{
             console.log(e._id);
             const id=e._id
-                res.status(201).send({msg:"successfully created",id})
+            const token= sign({id},process.env.JWT_TOKEN,{expiresIn:"10s"})
+                res.status(201).send({msg:"successfully uploaded",id,token})
             }).catch((error)=>{
                 res.status(500).send(error)
             })  

@@ -6,6 +6,7 @@
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.5",
     "node": "^22.13.0",
     "node-bin-setup": "^1.1.3"

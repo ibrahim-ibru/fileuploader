@@ -16,10 +16,11 @@ document.getElementById("submitbtn").addEventListener("click",async(e)=>{
             console.log(res);
 
         if(res.status==201){
-            const {msg,id}= await res.json()
+            const {msg,id,token}= await res.json()
             alert(msg)
             console.log(id);
-            document.getElementById("url").innerHTML=`<a href="http://localhost:3000/api/${id}">http://localhost:3000/api/${id}</a>
+            sessionStorage.setItem("token",token)
+            document.getElementById("url").innerHTML=`<a href="../pages/view.html?id=${id}">http://localhost:3000/pages/view.html?id=${id}</a>
 `
             
         }
@@ -46,12 +47,14 @@ document.getElementById("submitbtn").addEventListener("click",async(e)=>{
 
 
 
-function convertBase64(file){
+async function convertBase64(file){
     console.log(file);
     
     return new Promise((resolve,reject)=>{
         const fileReader=new FileReader();
         fileReader.readAsDataURL(file);
+
+        
         fileReader.onload=()=>{
             resolve(fileReader.result)
         }
