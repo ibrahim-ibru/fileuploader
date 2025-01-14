@@ -1,0 +1,10 @@
+*{
+    background-color: bisque;
+    margin: 0;
+}
+
+form{
+    margin: 10%;
+    height: 100vh;
+    line-height: 30px;
+}
